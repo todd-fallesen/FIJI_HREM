@@ -1,5 +1,5 @@
 #Open images script in python
-from ij import IJ
+from ij import IJ, ImagePlus
 from fiji.util.gui import GenericDialogPlus
 from ij.plugin import FolderOpener
 
@@ -18,6 +18,5 @@ if gui.wasOKed():
 	stackimage.show()
 	grat_file = gui.getNextString() #grat file string
 	gratimage = IJ.openImage(grat_file)
+	gratimage.setTitle('Grat')
 	gratimage.show()
-    
-    return stack_path, grat_file

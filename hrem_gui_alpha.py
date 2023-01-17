@@ -6,13 +6,6 @@ gui = GenericDialogPlus("HREM GUIde")
 # Add some gui elements (Ok and Cancel button are present by default)
 # Elements are stacked on top of each others by default (unless specified)
 
-gui.addMessage("Set some basic parameters for HREM Data")
-
-gui.addDirectoryField("Some_folder path", "DefaultFolderPath") # raw data path
-
-gui.addStringField("Your Name :", "Paul Revere")
-gui.addStringField("Aquistion Date (YYYYMMDD) : ", "17760704")
-
 # Add possibility to choose some images already opened in Fiji
 gui.addMessage("If Images are already open, select them below:")
 gui.addImageChoice("HREM Stack Image","Some description for image1")
@@ -25,6 +18,14 @@ gui.addMessage("If Images are not open, choose image folder below:")
 # The GenericDialogPlus also allows to select files, folder or both using a browse button
 gui.addDirectoryField("HREM Stack folder path", "DefaultFolderPath")
 gui.addFileField("HREM Calibration Image file path", "DefaultFilePath")
+def open_images():
+	print("Sup yo")
+gui.addButton("Open Images", open_images)
+#Set name and date if not found by parameters
+gui.addMessage("") #set extra line
+gui.addMessage("Set some basic parameters for HREM Data")
+gui.addStringField("Your Name :", "Paul Revere")
+gui.addStringField("Aquistion Date (YYYYMMDD) : ", "17760704")
 
 #gui.addNumericField("Image number for calibration slide", 10, 0) # 0 for no decimal part
 #gui.addDirectoryOrFileField("Some_Path", "DefaultPath")
@@ -37,6 +38,9 @@ gui.addCheckbox("Flat Field Correct", True)
 gui.addNumericField("Slice number flat field", 10, 0) 
 gui.addChoice("Select output bit depth to save at", ["16", "8"], "16") # 16 bit is default here
 
+#def invert():
+#	print("Sup yo")
+#gui.addButton("Invert Image", invert)
 # Show dialog, the rest of the code is not executed before OK or Cancel is clicked
 gui.showDialog() # dont forget to actually display the dialog at some point
 
